@@ -1,29 +1,32 @@
-from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QSizePolicy
+from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QSizePolicy, QFileDialog
 from MyComponents.MyButtons import BrowseButton
 
 
-def createBrowse(): #TODO: ADD PROCESS TO THE CLICK SIGNAL ON THE BROWSE BTN
-    widget = QWidget()
-    layout = QHBoxLayout()
+class BrowseContainer:
+    def __init__(self):
+        self.lineEdit = QLineEdit()
+        self.browse_btn = BrowseButton()
 
-    browse_btn = BrowseButton()
-    browse_btn.setFixedSize(30, 30)
+        self.browse_btn.setFixedSize(30, 30)
 
-    lineEdit = QLineEdit()
-    lineEdit.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-    lineEdit.setFixedHeight(30)
-    lineEdit.setPlaceholderText("C:/ActiveUser/Downloads/Folder.zip")
+        self.lineEdit.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.lineEdit.setFixedHeight(30)
+        self.lineEdit.setPlaceholderText("C:/ActiveUser/Downloads/Folder.zip")
 
-    layout.addWidget(lineEdit)
-    layout.addWidget(browse_btn)
+    def create(self):
+        widget = QWidget()
+        layout = QHBoxLayout()
 
-    widget.setLayout(layout)
-    widget.setFixedHeight(45)
+        layout.addWidget(self.lineEdit)
+        layout.addWidget(self.browse_btn)
 
-    # browse_btn.clicked.connect()
+        widget.setLayout(layout)
+        widget.setFixedHeight(45)
 
-    return widget
+        def browseAction():
+            file_path, _ = QFileDialog.getOpenFileName()
+            self.lineEdit.setText(file_path)
 
+        self.browse_btn.clicked.connect(browseAction)
 
-
-
+        return widget

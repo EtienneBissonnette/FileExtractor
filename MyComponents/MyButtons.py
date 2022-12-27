@@ -56,6 +56,7 @@ class BrowseButton(QPushButton):
             }
         """)
 
+
 class filterButton(QPushButton):
     def __init__(self):
         super().__init__()
@@ -80,7 +81,3 @@ class filterButton(QPushButton):
                 border-color:  #fba300;
             }
         """)
-
-
-
-
