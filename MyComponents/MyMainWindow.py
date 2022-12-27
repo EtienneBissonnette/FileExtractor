@@ -18,13 +18,28 @@ class MyMainWindow(QMainWindow):
 
         extract_btn = ExtractButton("EXTRACT")
 
-        browse_input = BrowseContainer().create()
+        browseContainer = BrowseContainer()
+        browse_input = browseContainer.create()
 
-        filter_input = FilterContainer().create()
+        filterContainer = FilterContainer()
+        filter_input = filterContainer.create()
 
         main_layout.addWidget(browse_input)
         btm_layout.addWidget(filter_input)
         btm_layout.addWidget(extract_btn)
+
+        def extractAction():
+            browsePath = browseContainer.lineEdit.text()
+            usedFilterLst = filterContainer.filter_lst
+
+            usedFilters = []
+            for i in range(usedFilterLst.count()):
+                usedFilters.append(usedFilterLst.item(i).text())
+
+            print(browsePath)
+            print(usedFilters)
+
+        extract_btn.clicked.connect(extractAction)
 
         main_layout.addLayout(btm_layout)
 
