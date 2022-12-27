@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout
 from MyComponents.MyButtons import ExtractButton
 from MyComponents.Containers.browse import BrowseContainer
-from MyComponents.Containers.filter import createFilters
+from MyComponents.Containers.filter import FilterContainer
 
 
 class MyMainWindow(QMainWindow):
@@ -20,7 +20,7 @@ class MyMainWindow(QMainWindow):
 
         browse_input = BrowseContainer().create()
 
-        filter_input = createFilters()
+        filter_input = FilterContainer().create()
 
         main_layout.addWidget(browse_input)
         btm_layout.addWidget(filter_input)
