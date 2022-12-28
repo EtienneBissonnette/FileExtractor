@@ -1,7 +1,8 @@
 from PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout
-from MyComponents.MyButtons import ExtractButton
+from MyComponents.CustomWidgets.MyButtons import ExtractButton
 from MyComponents.Containers.browse import BrowseContainer
 from MyComponents.Containers.filter import FilterContainer
+from MyFunctions.extraction import extraction
 
 
 class MyMainWindow(QMainWindow):
@@ -29,15 +30,14 @@ class MyMainWindow(QMainWindow):
         btm_layout.addWidget(extract_btn)
 
         def extractAction():
-            browsePath = browseContainer.lineEdit.text()
-            usedFilterLst = filterContainer.filter_lst
+            browse_path = browseContainer.lineEdit.text()
+            filter_list = filterContainer.filter_lst
 
-            usedFilters = []
-            for i in range(usedFilterLst.count()):
-                usedFilters.append(usedFilterLst.item(i).text())
+            used_filters = []
+            for i in range(filter_list.count()):
+                used_filters.append(filter_list.item(i).text())
 
-            print(browsePath)
-            print(usedFilters)
+            extraction(browse_path,used_filters)
 
         extract_btn.clicked.connect(extractAction)
 

@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLineEdit, QListWidget, QSizePolicy
-from MyComponents.MyButtons import filterButton
+from MyComponents.CustomWidgets.MyButtons import filterButton
 
 
 class FilterContainer:
@@ -33,6 +33,7 @@ class FilterContainer:
         def addFilterAction():
             filter_value = self.lineEdit.text()
             self.filter_lst.addItem(filter_value)
+            self.lineEdit.setText("")
 
         self.filter_btn.clicked.connect(addFilterAction)
 

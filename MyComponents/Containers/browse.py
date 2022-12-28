@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QSizePolicy, QFileDialog
-from MyComponents.MyButtons import BrowseButton
+from MyComponents.CustomWidgets.MyButtons import BrowseButton
 
 
 class BrowseContainer:
