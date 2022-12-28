@@ -1,10 +1,11 @@
-from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QSizePolicy, QFileDialog
+from PyQt6.QtWidgets import QWidget, QHBoxLayout, QSizePolicy, QFileDialog
 from MyComponents.CustomWidgets.MyButtons import BrowseButton
+from MyComponents.CustomWidgets.MyLineEdits import BrowseLineEdit
 
 
 class BrowseContainer:
     def __init__(self):
-        self.lineEdit = QLineEdit()
+        self.lineEdit = BrowseLineEdit()
         self.browse_btn = BrowseButton()
 
         self.browse_btn.setFixedSize(30, 30)

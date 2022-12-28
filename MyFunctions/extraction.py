@@ -1,7 +1,7 @@
 import zipfile, os, shutil
 
 
-def extraction(zip_path, filters):  # TODO: implement a way to use wildcards to extract desired files.
+def extraction(zip_path, filters):
 
     destination, _ = os.path.split(zip_path)
     destination += "/extracted"
